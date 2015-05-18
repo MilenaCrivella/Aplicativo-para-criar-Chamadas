@@ -1,0 +1,12 @@
+##
+Português#2#Presente
+Português#1#Ausente
+Português#1#Presente
+Português#2#Justificado
+Português#2#Justificado
+Português#2#Justificado
+Português#2#Justificado
+Português#2#Justificado
+Português#2 System.Windows.Forms.ComboBox, Items.Count: 12#Presente
+Português#16/05/2015 02:56#Presente
+Português#16/05/2015 03:10#Presente
