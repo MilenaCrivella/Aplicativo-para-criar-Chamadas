@@ -8,21 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.VisualBasic;
+
 
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        string disciplina;
         string[] Presenca = { "Não Registrado", "Presente", "Ausente", "Justificado" };
         Color[] PresencaCores = { Color.Gray, Color.LimeGreen, Color.Red, Color.LightBlue };
         int presencaAtual = 0;
-        string arq_disciplinas = "disciplinas.txt";
+        public int linhas = 2;
+        public int colunas = 2;
+
+        List<AtividadesAluno> listaAtividadesAlunos = new List<AtividadesAluno>();
 
         public Form1()
         {
             InitializeComponent();
-            comboBox_disciplina.Items.Clear();
-            Retornar_Disciplinas();
+            Alunos(colunas, linhas);
+        }
+
+        private void Alunos(int C, int L)
+        {
+            for (int i = 0; i < C; i++)
+            {
+                for (int n = 0; n < L; n++)
+                {
+
+                }
+            }
         }
 
         private void RegistrarPresenca(object sender, EventArgs e)
@@ -33,8 +49,8 @@ namespace WindowsFormsApplication1
                 presencaAtual = 0;
             }
 
-            label_nRegistrdo.Text = Presenca[presencaAtual];
-            label_nRegistrdo.BackColor = PresencaCores[presencaAtual];
+            label_nRegistrado.Text = Presenca[presencaAtual];
+            label_nRegistrado.BackColor = PresencaCores[presencaAtual];
         }
 
         private void Fechar(object sender, EventArgs e)
@@ -44,12 +60,10 @@ namespace WindowsFormsApplication1
 
         private void Adicionar_disciplina(object sender, EventArgs e)
         {
-            comboBox_disciplina.Items.Add("");
+            Prompt prompt = new Prompt();
             string promptValue = Prompt.ShowDialog("Nomeie sua disciplina", "Adicionar Disciplina");
-            Console.WriteLine("---");
-            Console.WriteLine(promptValue);
-            Console.WriteLine("---");
             comboBox_disciplina.Items.Add(promptValue);
+            disciplina = comboBox_disciplina.Text;
         }
 
         private void Salvar_Faltas(object sender, EventArgs e)
@@ -59,42 +73,45 @@ namespace WindowsFormsApplication1
 
             a.disciplina = comboBox_disciplina.Text;
             a.data = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
-            a.alunos = label_nRegistrdo.Text;
+            a.alunos = label_nRegistrado.Text;
 
             using (StreamWriter file = new StreamWriter(arq, true))
             {
                 file.WriteLine(a.funcionarioAsString());
             }
 
-            Disciplinas d = new Disciplinas();
+            Disciplina nova_disciplina = new Disciplina();
+            string salvar = "disciplinas.txt";
 
-            d.disciplina = comboBox_disciplina.Text;
+            nova_disciplina.disciplina = comboBox_disciplina.Text;
 
-            using (StreamWriter file = new StreamWriter(arq_disciplinas, true))
+            using (StreamWriter file = new StreamWriter(salvar, true))
             {
-                file.WriteLine(d.funcionarioAsString());
+                file.WriteLine(nova_disciplina.funcionarioAsString());
             }
+
         }
 
-        private void Retornar_Disciplinas()
+        private void Adicionar_Aluno(object sender, EventArgs e)
         {
-            if (!File.Exists(arq_disciplinas))
-            {
-                return;
-            }
+                Novo_Aluno prompt = new Novo_Aluno();
+                string promptValue = Novo_Aluno.ShowDialog("Nome do Aluno", "Novo Aluno");
+                comboBox_disciplina.Items.Add(promptValue);
 
-            String line;
-            using (StreamReader file = new StreamReader(arq_disciplinas))
-            {
-                while ((line = file.ReadLine()) != null)
+                int OffSetLeft = 30;
+                int OffSetTop = 70;
+
+              
+                for (int l = 0; l < 3; l++)
                 {
-                    Disciplinas d = new Disciplinas();
-                    //Console.WriteLine(line);
-                    comboBox_disciplina.Items.Add(line);
+                    for (int c = 0; c < 3; c++)
+                    {
+                        AtividadesAluno a = new AtividadesAluno(){Width = 118, Height = 140,};
+                        a.Location = new Point(a.Size.Width * c + OffSetLeft + (c * 10), a.Size.Height * l + OffSetTop + (l * 10));
+                        listaAtividadesAlunos.Add(a);
+                        this.Controls.Add(a);
+                    }
                 }
             }
-        }
-
     }
 }
-

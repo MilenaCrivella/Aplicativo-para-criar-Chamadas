@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.label_disciplina = new System.Windows.Forms.Label();
-            this.label_nRegistrdo = new System.Windows.Forms.Label();
+            this.label_nRegistrado = new System.Windows.Forms.Label();
             this.comboBox_disciplina = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.adicionarDisciplinaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -32,8 +32,9 @@
             this.salvarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Cinderela = new System.Windows.Forms.Label();
             this.Aluno1 = new System.Windows.Forms.GroupBox();
-            this.ovalPictureBoxFotoAluno = new WindowsFormsApplication1.OvalPictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.adicionarAlunoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ovalPictureBoxFotoAluno = new WindowsFormsApplication1.OvalPictureBox();
             this.menuStrip1.SuspendLayout();
             this.Aluno1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ovalPictureBoxFotoAluno)).BeginInit();
@@ -49,20 +50,22 @@
             this.label_disciplina.TabIndex = 5;
             this.label_disciplina.Text = "Disciplina:";
             // 
-            // label_nRegistrdo
+            // label_nRegistrado
             // 
-            this.label_nRegistrdo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.label_nRegistrdo.Location = new System.Drawing.Point(20, 16);
-            this.label_nRegistrdo.Name = "label_nRegistrdo";
-            this.label_nRegistrdo.Size = new System.Drawing.Size(81, 13);
-            this.label_nRegistrdo.TabIndex = 8;
-            this.label_nRegistrdo.Text = "Não Registrado";
-            this.label_nRegistrdo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_nRegistrado.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label_nRegistrado.Location = new System.Drawing.Point(20, 16);
+            this.label_nRegistrado.Name = "label_nRegistrado";
+            this.label_nRegistrado.Size = new System.Drawing.Size(81, 13);
+            this.label_nRegistrado.TabIndex = 8;
+            this.label_nRegistrado.Text = "Não Registrado";
+            this.label_nRegistrado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBox_disciplina
             // 
             this.comboBox_disciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_disciplina.FormattingEnabled = true;
+            this.comboBox_disciplina.Items.AddRange(new object[] {
+            "Português"});
             this.comboBox_disciplina.Location = new System.Drawing.Point(119, 36);
             this.comboBox_disciplina.Name = "comboBox_disciplina";
             this.comboBox_disciplina.Size = new System.Drawing.Size(171, 21);
@@ -72,11 +75,12 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adicionarDisciplinaToolStripMenuItem,
-            this.sairToolStripMenuItem,
-            this.salvarToolStripMenuItem});
+            this.adicionarAlunoToolStripMenuItem,
+            this.salvarToolStripMenuItem,
+            this.sairToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(325, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(517, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -115,12 +119,19 @@
             // 
             this.Aluno1.Controls.Add(this.ovalPictureBoxFotoAluno);
             this.Aluno1.Controls.Add(this.Cinderela);
-            this.Aluno1.Controls.Add(this.label_nRegistrdo);
-            this.Aluno1.Location = new System.Drawing.Point(39, 88);
+            this.Aluno1.Controls.Add(this.label_nRegistrado);
+            this.Aluno1.Location = new System.Drawing.Point(378, 231);
             this.Aluno1.Name = "Aluno1";
             this.Aluno1.Size = new System.Drawing.Size(118, 140);
             this.Aluno1.TabIndex = 13;
             this.Aluno1.TabStop = false;
+            // 
+            // adicionarAlunoToolStripMenuItem
+            // 
+            this.adicionarAlunoToolStripMenuItem.Name = "adicionarAlunoToolStripMenuItem";
+            this.adicionarAlunoToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.adicionarAlunoToolStripMenuItem.Text = "Adicionar Aluno";
+            this.adicionarAlunoToolStripMenuItem.Click += new System.EventHandler(this.Adicionar_Aluno);
             // 
             // ovalPictureBoxFotoAluno
             // 
@@ -138,11 +149,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 409);
+            this.ClientSize = new System.Drawing.Size(517, 409);
             this.Controls.Add(this.Aluno1);
             this.Controls.Add(this.comboBox_disciplina);
             this.Controls.Add(this.label_disciplina);
             this.Controls.Add(this.menuStrip1);
+            this.Location = new System.Drawing.Point(39, 0);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -160,7 +172,7 @@
         #endregion
 
         private System.Windows.Forms.Label label_disciplina;
-        private System.Windows.Forms.Label label_nRegistrdo;
+        private System.Windows.Forms.Label label_nRegistrado;
         private OvalPictureBox ovalPictureBoxFotoAluno;
         private System.Windows.Forms.ComboBox comboBox_disciplina;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -170,6 +182,7 @@
         private System.Windows.Forms.ToolStripMenuItem salvarToolStripMenuItem;
         private System.Windows.Forms.GroupBox Aluno1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ToolStripMenuItem adicionarAlunoToolStripMenuItem;
     }
 }
 
