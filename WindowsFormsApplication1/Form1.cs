@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Drawing;                                                                                                                                                   //Eu estive AQUI
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,47 +10,23 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic;
 
-
 namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
+        string salvar = "disciplinas.txt";
+        string nomes = "NomesEstudante.txt";
+        string arq = "AlunosFaltosos.txt";
         string disciplina;
-        string[] Presenca = { "Não Registrado", "Presente", "Ausente", "Justificado" };
-        Color[] PresencaCores = { Color.Gray, Color.LimeGreen, Color.Red, Color.LightBlue };
-        int presencaAtual = 0;
-        public int linhas = 2;
-        public int colunas = 2;
+        
 
         List<AtividadesAluno> listaAtividadesAlunos = new List<AtividadesAluno>();
+        
 
         public Form1()
         {
             InitializeComponent();
-            Alunos(colunas, linhas);
-        }
-
-        private void Alunos(int C, int L)
-        {
-            for (int i = 0; i < C; i++)
-            {
-                for (int n = 0; n < L; n++)
-                {
-
-                }
-            }
-        }
-
-        private void RegistrarPresenca(object sender, EventArgs e)
-        {
-            presencaAtual++;
-            if (presencaAtual + 1 > Presenca.Length)
-            {
-                presencaAtual = 0;
-            }
-
-            label_nRegistrado.Text = Presenca[presencaAtual];
-            label_nRegistrado.BackColor = PresencaCores[presencaAtual];
+            Lendo_Arquivos_Salvos();   
         }
 
         private void Fechar(object sender, EventArgs e)
@@ -62,56 +38,108 @@ namespace WindowsFormsApplication1
         {
             Prompt prompt = new Prompt();
             string promptValue = Prompt.ShowDialog("Nomeie sua disciplina", "Adicionar Disciplina");
-            comboBox_disciplina.Items.Add(promptValue);
-            disciplina = comboBox_disciplina.Text;
+            if (promptValue != "")
+            {
+                comboBox_disciplina.Items.Add(promptValue);
+                disciplina = comboBox_disciplina.Text;
+                
+            }
+
         }
-
-        private void Salvar_Faltas(object sender, EventArgs e)
+        
+        public void Salvar_Faltas(object sender, EventArgs e)
         {
-            Aluno a = new Aluno();
-            string arq = "@Cinderela.txt";
+            Aluno aluno = new Aluno();
+            AtividadesAluno a = new AtividadesAluno();
 
-            a.disciplina = comboBox_disciplina.Text;
-            a.data = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
-            a.alunos = label_nRegistrado.Text;
+            aluno.disciplina = comboBox_disciplina.Text;
+            aluno.data = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
 
             using (StreamWriter file = new StreamWriter(arq, true))
             {
-                file.WriteLine(a.funcionarioAsString());
+                file.WriteLine(aluno.alunoAsString());
             }
+        }
 
-            Disciplina nova_disciplina = new Disciplina();
-            string salvar = "disciplinas.txt";
-
-            nova_disciplina.disciplina = comboBox_disciplina.Text;
-
-            using (StreamWriter file = new StreamWriter(salvar, true))
+        private void Lendo_Arquivos_Salvos()
+        {
+            if (!File.Exists(salvar))
             {
-                file.WriteLine(nova_disciplina.funcionarioAsString());
+                return;
             }
 
+            String line;
+            using (StreamReader file = new StreamReader(salvar))
+            {
+                while ((line = file.ReadLine()) != null)
+                {
+                    Disciplina nova_disciplina = new Disciplina();
+                    nova_disciplina.disciplinaFromString(line);
+                    comboBox_disciplina.Items.Add(line);
+                }
+            }
+
+
+            if (!File.Exists(nomes))
+            {
+                return;
+            }
+
+            String lines;
+            using (StreamReader file = new StreamReader(nomes))
+            {
+                while ((lines = file.ReadLine()) != null)
+                {
+                    Estudantes novoEstudante = new Estudantes();
+                    novoEstudante.estudantesFromString(lines);
+                    Console.WriteLine(lines);
+                    AtividadesAluno a = new AtividadesAluno() { Width = 118, Height = 140 };
+                    a.Text = novoEstudante.estudante;
+                    a.Location = new Point(Convert.ToInt32(novoEstudante.posicaoX), Convert.ToInt32(novoEstudante.posicaoY));
+                    listaAtividadesAlunos.Add(a);
+                    this.Controls.Add(a);
+                }
+
+            }
         }
 
         private void Adicionar_Aluno(object sender, EventArgs e)
         {
-                Novo_Aluno prompt = new Novo_Aluno();
-                string promptValue = Novo_Aluno.ShowDialog("Nome do Aluno", "Novo Aluno");
-                comboBox_disciplina.Items.Add(promptValue);
+            Novo_Aluno prompt = new Novo_Aluno();
+            string promptValue = Novo_Aluno.ShowDialog("Nome do Aluno", "Novo Aluno");
+            Estudantes novoEstudante = new Estudantes();
 
-                int OffSetLeft = 30;
-                int OffSetTop = 70;
-
-              
-                for (int l = 0; l < 3; l++)
-                {
-                    for (int c = 0; c < 3; c++)
-                    {
-                        AtividadesAluno a = new AtividadesAluno(){Width = 118, Height = 140,};
-                        a.Location = new Point(a.Size.Width * c + OffSetLeft + (c * 10), a.Size.Height * l + OffSetTop + (l * 10));
-                        listaAtividadesAlunos.Add(a);
-                        this.Controls.Add(a);
-                    }
-                }
+            if (promptValue != "")
+            {
+                AtividadesAluno a = new AtividadesAluno() { Width = 118, Height = 140 };
+                a.Text = promptValue;
+                listaAtividadesAlunos.Add(a);
             }
+
+            int OffSetLeft = 30;
+            int OffSetTop = 70;
+
+            for (int i = 0; i < listaAtividadesAlunos.Count; i++)
+            {
+                int c = (i % 3);
+                int l = (int)Math.Floor(i / 3.0);
+                Console.WriteLine("coluna: " + c + " linha: " + l);
+                AtividadesAluno a = listaAtividadesAlunos.ElementAt(i);
+                a.Location = new Point(a.Size.Width * c + OffSetLeft + (c * 10), a.Size.Height * l + OffSetTop + (l * 10));
+
+                this.Controls.Add(listaAtividadesAlunos.ElementAt(i));
+
+                novoEstudante.posicaoX = Convert.ToString(a.Location.X);
+                novoEstudante.posicaoY = Convert.ToString(a.Location.Y);
+            }
+
+            novoEstudante.estudante = promptValue;
+            using (StreamWriter file = new StreamWriter(nomes, true))
+            {
+                file.WriteLine(novoEstudante.estudantesAsString());
+            }
+
+        }
+
     }
 }

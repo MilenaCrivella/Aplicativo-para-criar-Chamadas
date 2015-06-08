@@ -11,18 +11,20 @@ namespace WindowsFormsApplication1
         public string disciplina;
         public string data;
         public string alunos;
+        public string presenca;
 
-        public string funcionarioAsString()
+        public string alunoAsString()
         {
-            return disciplina + "#" + data + "#" + alunos;
+            return disciplina + "#" + data + "#" + alunos + "#" + presenca;
         }
 
-        public void funcionarioFromString(string data)
+        public void alunoFromString(string data)
         {
             string[] info = data.Split('#');
             disciplina = info[0];
             data = info[1];
             alunos = info[2];
+            presenca = info[3];
         }
     }
 }

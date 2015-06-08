@@ -1,20 +1,83 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    class AtividadesAluno : GroupBox 
+    class AtividadesAluno : GroupBox
     {
+        public string arq = "AlunosFaltosos.txt";
         Label labelPresenca = new Label();
-        OvalPictureBox pictureBoxFoto = new OvalPictureBox();
+        OvalPictureBox fotoAluno = new OvalPictureBox();
+        Button PresencaAluno = new Button() { Text = "Não Registrado", Left = 10, Width = 100, Top = 115 };
+
+        string[] Presenca = { "Não Registrado", "Presente", "Ausente", "Justificado" };
+        Color[] PresencaCores = { Color.Gray, Color.LimeGreen, Color.Red, Color.LightBlue };
+
+        int presencaAtual = 0;
+        
+        public AtividadesAluno()
+        {
+            ResizeRedraw = true;
+        }
 
         protected override void InitLayout()
         {
+            Novo_Aluno prompt = new Novo_Aluno();
             base.InitLayout();
-            labelPresenca.Text = "";
-            labelPresenca.AutoSize = true;
-            labelPresenca.Size = new Size (40,40);
-            this.Controls.Add(labelPresenca);
+            
+            fotoAluno.Location = new Point(20, 30);
+            fotoAluno.Width = 80;
+            fotoAluno.Height = 80;
+            fotoAluno.BackColor = Color.DarkBlue;
+            fotoAluno.Image = Image.FromFile(Application.StartupPath + "\\FotosAlunos\\" + this.Text + ".jpg");
+            //else { fotoAluno.Image = WindowsFormsApplication1.Properties.Resources.semFoto; }
+
+            fotoAluno.SizeMode = PictureBoxSizeMode.Zoom;
+            this.Controls.Add(fotoAluno);
+
+            this.Controls.Add(PresencaAluno);
+            PresencaAluno.Click += Presenca_Click;
         }
+
+        protected override void OnResize(System.EventArgs e)
+        {
+            base.OnResize(e);
+            fotoAluno.Size = new Size(fotoAluno.Size.Width, fotoAluno.Size.Width);
+        }
+
+        public void Presenca_Click(object sender, EventArgs e)
+        {
+            presencaAtual++;
+            if (presencaAtual + 1 > Presenca.Length)
+            {
+                presencaAtual = 0;
+            }
+
+            PresencaAluno.Text = Presenca[presencaAtual];
+            PresencaAluno.BackColor = PresencaCores[presencaAtual];
+
+        }
+
+        //public string salvar()
+        //{
+        //    switch (presencaAtual)
+        //    {
+        //        case 0:
+        //            return "Não Registrado";
+        //        case 1:
+        //            return "Presente";
+        //        case 2:
+        //            return "Ausente";
+        //        case 3:
+        //            return "Justificado";
+        //    }
+
+        //    return status;
+        //}
+
+
     }
 }

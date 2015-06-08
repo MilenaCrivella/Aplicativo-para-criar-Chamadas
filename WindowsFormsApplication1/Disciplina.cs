@@ -9,9 +9,15 @@ namespace WindowsFormsApplication1
     class Disciplina
     {
         public string disciplina;
-        public string funcionarioAsString()
+        public string disciplinaAsString()
         {
             return disciplina;
+        }
+
+        public void disciplinaFromString(string data)
+        {
+            string[] info = data.Split('#');
+            disciplina = info[0];
         }
     }
 }
