@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
     {
         string salvar = "disciplinas.txt";
         string nomes = "NomesEstudante.txt";
-        string arq = "AlunosFaltosos.txt";
+        string arq = "ChamadaAlunos.txt";
         string disciplina;
         
 
@@ -49,15 +49,36 @@ namespace WindowsFormsApplication1
         
         public void Salvar_Faltas(object sender, EventArgs e)
         {
-            Aluno aluno = new Aluno();
-            AtividadesAluno a = new AtividadesAluno();
-
-            aluno.disciplina = comboBox_disciplina.Text;
-            aluno.data = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
-
-            using (StreamWriter file = new StreamWriter(arq, true))
+            foreach (AtividadesAluno a in listaAtividadesAlunos)
             {
-                file.WriteLine(aluno.alunoAsString());
+                Aluno aluno = new Aluno();
+
+                    aluno.disciplina = comboBox_disciplina.Text;
+                    aluno.data = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
+                    aluno.alunos = a.Text;
+                  
+                    switch (a.presencaAtual)
+                    {
+                        case 0:
+                            aluno.presenca = "Não Registrado";
+                            break;
+
+                        case 1:
+                            aluno.presenca = "Presente";
+                            break;
+
+                        case 2:
+                            aluno.presenca = "Ausente";
+                            break;
+
+                        case 3:
+                            aluno.presenca = "Justificado";
+                            break;
+                    }
+                    using (StreamWriter file = new StreamWriter(arq, true))
+                    {
+                        file.WriteLine(aluno.alunoAsString());
+                    }
             }
         }
 
@@ -92,7 +113,6 @@ namespace WindowsFormsApplication1
                 {
                     Estudantes novoEstudante = new Estudantes();
                     novoEstudante.estudantesFromString(lines);
-                    Console.WriteLine(lines);
                     AtividadesAluno a = new AtividadesAluno() { Width = 118, Height = 140 };
                     a.Text = novoEstudante.estudante;
                     a.Location = new Point(Convert.ToInt32(novoEstudante.posicaoX), Convert.ToInt32(novoEstudante.posicaoY));
@@ -123,7 +143,6 @@ namespace WindowsFormsApplication1
             {
                 int c = (i % 3);
                 int l = (int)Math.Floor(i / 3.0);
-                Console.WriteLine("coluna: " + c + " linha: " + l);
                 AtividadesAluno a = listaAtividadesAlunos.ElementAt(i);
                 a.Location = new Point(a.Size.Width * c + OffSetLeft + (c * 10), a.Size.Height * l + OffSetTop + (l * 10));
 

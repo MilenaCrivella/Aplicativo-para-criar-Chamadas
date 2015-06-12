@@ -22,8 +22,8 @@ namespace WindowsFormsApplication1
             Button confirmation = new Button() { Text = "Salvar", Left = 20, Width = 100, Top = 100 };
             confirmation.Click += (sender, e) =>
             {
-                prompt.Close();
                 fotoAluno.Image.Save(Application.StartupPath.ToString() + "\\FotosAlunos\\" + txtAluno.Text + ".jpg");
+                prompt.Close();
             };
 
             Button carregarImagem = new Button() { Text = "Carregar Imagem", Left = 140, Width = 100, Top = 100 };

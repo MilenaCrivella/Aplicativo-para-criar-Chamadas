@@ -62,6 +62,7 @@
     <Compile Include="OvalPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Presenca.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,11 +13,11 @@ namespace WindowsFormsApplication1
         OvalPictureBox fotoAluno = new OvalPictureBox();
         Button PresencaAluno = new Button() { Text = "Não Registrado", Left = 10, Width = 100, Top = 115 };
 
-        string[] Presenca = { "Não Registrado", "Presente", "Ausente", "Justificado" };
+        public int presencaAtual = 0;
+
+        public string[] Presenca = { "Não Registrado", "Presente", "Ausente", "Justificado" };
         Color[] PresencaCores = { Color.Gray, Color.LimeGreen, Color.Red, Color.LightBlue };
 
-        int presencaAtual = 0;
-        
         public AtividadesAluno()
         {
             ResizeRedraw = true;
@@ -58,26 +58,7 @@ namespace WindowsFormsApplication1
 
             PresencaAluno.Text = Presenca[presencaAtual];
             PresencaAluno.BackColor = PresencaCores[presencaAtual];
-
+            
         }
-
-        //public string salvar()
-        //{
-        //    switch (presencaAtual)
-        //    {
-        //        case 0:
-        //            return "Não Registrado";
-        //        case 1:
-        //            return "Presente";
-        //        case 2:
-        //            return "Ausente";
-        //        case 3:
-        //            return "Justificado";
-        //    }
-
-        //    return status;
-        //}
-
-
     }
 }
