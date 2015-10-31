@@ -1,0 +1,9 @@
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.exe.config
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.csprojResolveAssemblyReference.cache
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.Form1.resources
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.Properties.Resources.resources
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.csproj.GenerateResource.Cache
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.exe
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.pdb
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.exe
+c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.pdb
