@@ -56,7 +56,7 @@ namespace AplicativoDeChamada
             }
 
             int OffSetLeft = 30;
-            int OffSetTop = 70;
+            int OffSetTop = 40;
 
             for (int i = 0; i < listaAtividadesAlunos.Count; i++)
             {

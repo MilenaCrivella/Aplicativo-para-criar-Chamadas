@@ -33,14 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_disciplina = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Chamada = new System.Windows.Forms.DataGridView();
+            this.NomesAlunos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.Chamada = new System.Windows.Forms.DataGridView();
-            this.NomesAlunos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabBtt.SuspendLayout();
-            this.ListaAlunos.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chamada)).BeginInit();
             this.SuspendLayout();
@@ -49,20 +48,18 @@
             // 
             this.TabBtt.Controls.Add(this.ListaAlunos);
             this.TabBtt.Controls.Add(this.tabPage2);
-            this.TabBtt.Location = new System.Drawing.Point(2, 1);
+            this.TabBtt.Location = new System.Drawing.Point(2, 41);
             this.TabBtt.Name = "TabBtt";
             this.TabBtt.SelectedIndex = 0;
-            this.TabBtt.Size = new System.Drawing.Size(450, 428);
+            this.TabBtt.Size = new System.Drawing.Size(450, 388);
             this.TabBtt.TabIndex = 0;
             // 
             // ListaAlunos
             // 
-            this.ListaAlunos.Controls.Add(this.label1);
-            this.ListaAlunos.Controls.Add(this.comboBox_disciplina);
             this.ListaAlunos.Location = new System.Drawing.Point(4, 22);
             this.ListaAlunos.Name = "ListaAlunos";
             this.ListaAlunos.Padding = new System.Windows.Forms.Padding(3);
-            this.ListaAlunos.Size = new System.Drawing.Size(442, 402);
+            this.ListaAlunos.Size = new System.Drawing.Size(442, 362);
             this.ListaAlunos.TabIndex = 0;
             this.ListaAlunos.Text = "Lista de Alunos";
             this.ListaAlunos.UseVisualStyleBackColor = true;
@@ -71,7 +68,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Hobo Std", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(64, 28);
+            this.label1.Location = new System.Drawing.Point(20, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 23);
             this.label1.TabIndex = 1;
@@ -81,7 +78,7 @@
             // 
             this.comboBox_disciplina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_disciplina.FormattingEnabled = true;
-            this.comboBox_disciplina.Location = new System.Drawing.Point(186, 28);
+            this.comboBox_disciplina.Location = new System.Drawing.Point(116, 9);
             this.comboBox_disciplina.Name = "comboBox_disciplina";
             this.comboBox_disciplina.Size = new System.Drawing.Size(188, 21);
             this.comboBox_disciplina.TabIndex = 0;
@@ -96,6 +93,23 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Frequência";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Chamada
+            // 
+            this.Chamada.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Chamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Chamada.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NomesAlunos});
+            this.Chamada.Location = new System.Drawing.Point(6, 6);
+            this.Chamada.Name = "Chamada";
+            this.Chamada.RowHeadersVisible = false;
+            this.Chamada.Size = new System.Drawing.Size(430, 372);
+            this.Chamada.TabIndex = 0;
+            // 
+            // NomesAlunos
+            // 
+            this.NomesAlunos.HeaderText = "Alunos";
+            this.NomesAlunos.Name = "NomesAlunos";
             // 
             // button1
             // 
@@ -137,28 +151,13 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Fechar);
             // 
-            // Chamada
-            // 
-            this.Chamada.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Chamada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Chamada.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NomesAlunos});
-            this.Chamada.Location = new System.Drawing.Point(6, 6);
-            this.Chamada.Name = "Chamada";
-            this.Chamada.RowHeadersVisible = false;
-            this.Chamada.Size = new System.Drawing.Size(430, 372);
-            this.Chamada.TabIndex = 0;
-            // 
-            // NomesAlunos
-            // 
-            this.NomesAlunos.HeaderText = "Alunos";
-            this.NomesAlunos.Name = "NomesAlunos";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 461);
+            this.Controls.Add(this.comboBox_disciplina);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -167,11 +166,10 @@
             this.Name = "Form1";
             this.Text = "App q faz chamada";
             this.TabBtt.ResumeLayout(false);
-            this.ListaAlunos.ResumeLayout(false);
-            this.ListaAlunos.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Chamada)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

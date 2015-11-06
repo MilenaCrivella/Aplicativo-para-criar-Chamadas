@@ -7,3 +7,12 @@ c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\Aplica
 c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.pdb
 c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.exe
 c:\users\milena\documents\visual studio 2012\Projects\AplicativoDeChamada\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.pdb
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.exe.config
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.exe
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.pdb
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.exe
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\bin\Debug\AplicativoDeChamada.pdb
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.csprojResolveAssemblyReference.cache
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.Form1.resources
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.Properties.Resources.resources
+C:\Users\TEMP.NAVE0.001\Desktop\GitHub\Aplicativo-para-criar-Chamadas\AplicativoDeChamada\obj\Debug\AplicativoDeChamada.csproj.GenerateResource.Cache
